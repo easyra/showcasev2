@@ -2,6 +2,8 @@
   background: $primary-color;
   padding: 15px 0;
   text-transform: uppercase;
+  border-bottom: 5px solid $secondary-color;
+
   .navbar-content {
     color: $primary-font;
     display: flex;
