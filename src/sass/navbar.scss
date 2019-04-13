@@ -1,0 +1,23 @@
+.navbar {
+  background: $primary-color;
+  padding: 15px 0;
+  text-transform: uppercase;
+  .navbar-content {
+    color: $primary-font;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1000px;
+    margin: auto;
+    h1{      
+      font-size: 36px;
+    }
+    .navbar-items {
+      display: flex;      
+      a {
+        font-size: 16px;
+        margin: 0 7.5px;
+      }
+    }
+  }
+}
