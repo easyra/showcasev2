@@ -1,0 +1,38 @@
+.home {
+  background: $primary-color;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  .home-content {
+    margin: 15% auto 0;
+    @extend .container;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    h1 {
+      margin: 0 0 15px;
+      font-size: 108px;
+      color: $primary-font;
+    }
+    .btn {
+      margin: 15px 0;
+    }
+  }
+}
+
+.home-modal {
+  @extend .modal;
+  .modal-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    h4 {
+      margin: 15px 0 5px;
+    }
+    .btn {
+      margin: 15px 0;
+    }
+  }
+}
