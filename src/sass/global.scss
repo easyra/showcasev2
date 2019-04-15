@@ -10,6 +10,35 @@ h3,h4,h5,h6, a {
   font-family: 'Roboto', sans-serif
 }
 
+input {
+  input[type=text]:focus {
+    border: 3px solid #555;
+  }
+}
+
+.btn {
+  padding: 8px;
+  background: $secondary-color;
+  font-family: 'Roboto', sans-serif;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.2s;
+  width: min-content;
+  &:hover {
+    transform: scale(1.048);
+  }
+  &:active {
+    transform: scale(1)
+  }
+}
+
+.btn-disabled {
+  @extend .btn;
+  background: lightgray;
+  color: gray;
+  cursor: default;
+}
+
 .container {
   max-width: 800px;
   width: 100%;
