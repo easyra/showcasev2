@@ -17,6 +17,14 @@ class HomeContainer extends Component {
   createRoom = () => {
     this.setState({ joinModel: false, createModal: true });
   };
+  toggleModals = e => {
+    const { joinModel, createModal } = this.state;
+    if (e.keyCode === 74) {
+      joinModel ? this.closeModals() : this.joinRoom();
+    } else if (e.keyCode === 67) {
+      createModal ? this.closeModals() : this.createRoom();
+    }
+  };
 
   render() {
     return (
@@ -39,6 +47,12 @@ class HomeContainer extends Component {
       </>
     );
   }
+  componentWillMount = () => {
+    document.addEventListener('keyup', this.toggleModals);
+  };
+  componentWillUnmount = () => {
+    document.removeEventListener('keyup', this.toggleModals);
+  };
 }
 
 export default withRouter(HomeContainer);
