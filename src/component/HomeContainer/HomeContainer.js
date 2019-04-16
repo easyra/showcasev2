@@ -5,24 +5,24 @@ import CreateRoomModal from './CreateRoomModal/CreateRoomModal';
 
 class HomeContainer extends Component {
   state = {
-    joinModel: false,
-    createModal: false
+    joinModalIsOpen: false,
+    createModalIsOpen: false
   };
-  joinRoom = () => {
-    this.setState({ joinModel: true, createModal: false });
+  openJoinModal = () => {
+    this.setState({ joinModalIsOpen: true, createModalIsOpen: false });
   };
   closeModals = () => {
-    this.setState({ joinModel: false, createModal: false });
+    this.setState({ joinModalIsOpen: false, createModalIsOpen: false });
   };
-  createRoom = () => {
-    this.setState({ joinModel: false, createModal: true });
+  openCreateRoomModal = () => {
+    this.setState({ joinModalIsOpen: false, createModalIsOpen: true });
   };
-  toggleModals = e => {
-    const { joinModel, createModal } = this.state;
+  toggleModalsKeyup = e => {
+    const { joinModalIsOpen, createModalIsOpen } = this.state;
     if (e.keyCode === 74) {
-      joinModel ? this.closeModals() : this.joinRoom();
+      joinModalIsOpen ? this.closeModals() : this.openJoinModal();
     } else if (e.keyCode === 67) {
-      createModal ? this.closeModals() : this.createRoom();
+      createModalIsOpen ? this.closeModals() : this.openCreateRoomModal();
     }
   };
 
@@ -32,26 +32,28 @@ class HomeContainer extends Component {
         <div className='home'>
           <div className='home-content'>
             <h1>Showcase!</h1>
-            <h4 onClick={this.joinRoom} className='btn'>
+            <h4 onClick={this.openJoinModal} className='btn'>
               Join Room
             </h4>
-            <h4 onClick={this.createRoom} className='btn'>
+            <h4 onClick={this.openCreateRoomModal} className='btn'>
               Create Room
             </h4>
           </div>
         </div>
-        {this.state.joinModel && <JoinModal hideModal={this.closeModals} />}
-        {this.state.createModal && (
+        {this.state.joinModalIsOpen && (
+          <JoinModal hideModal={this.closeModals} />
+        )}
+        {this.state.createModalIsOpen && (
           <CreateRoomModal hideModal={this.closeModals} />
         )}
       </>
     );
   }
   componentWillMount = () => {
-    document.addEventListener('keyup', this.toggleModals);
+    document.addEventListener('keyup', this.toggleModalsKeyup);
   };
   componentWillUnmount = () => {
-    document.removeEventListener('keyup', this.toggleModals);
+    document.removeEventListener('keyup', this.toggleModalsKeyup);
   };
 }
 
