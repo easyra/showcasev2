@@ -20,9 +20,15 @@ class HomeContainer extends Component {
   toggleModalsKeyup = e => {
     const { joinModalIsOpen, createModalIsOpen } = this.state;
     if (e.keyCode === 74) {
-      joinModalIsOpen ? this.closeModals() : this.openJoinModal();
+      if (!joinModalIsOpen && !createModalIsOpen) {
+        //checks if no modal is open
+        this.openJoinModal();
+      }
     } else if (e.keyCode === 67) {
-      createModalIsOpen ? this.closeModals() : this.openCreateRoomModal();
+      if (!joinModalIsOpen && !createModalIsOpen) {
+        //checks if no modal is open
+        this.openCreateRoomModal();
+      }
     }
   };
 
