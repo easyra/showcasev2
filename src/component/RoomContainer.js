@@ -5,11 +5,12 @@ import UploadModal from './UploadModal/UploadModal';
 import { Route } from 'react-router-dom';
 
 class RoomContainer extends Component {
+  state = {};
   render() {
     return (
       <>
         <NavBar />
-        <Route path='/:roomId/upload' render={props => <UploadModal />} />
+        <UploadModal />
         <CardContainer />
       </>
     );
