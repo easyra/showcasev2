@@ -5,8 +5,8 @@ import { storageRef, databaseRef } from '../firebase';
 class UploadModal extends Component {
   state = {
     fullNameInput: '',
-    periodInput: '',
-    projectInput: '',
+    periodInput: '1',
+    projectInput: 'projecttitle',
     linkInput: '',
     imgInput: '',
     imgFile: null,

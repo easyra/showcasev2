@@ -2,19 +2,29 @@ import React, { Component } from 'react';
 import NavBar from './NavBar/NavBar';
 import CardContainer from './CardContainer/CardContainer';
 import UploadModal from './UploadModal/UploadModal';
-import { Route } from 'react-router-dom';
+import { databaseRef } from './firebase';
+import { Route, withRouter } from 'react-router-dom';
 
 class RoomContainer extends Component {
-  state = {};
+  state = { projects: [] };
   render() {
     return (
       <>
         <NavBar />
         <UploadModal />
-        <CardContainer />
+        <CardContainer projects={this.state.projects} />
       </>
     );
   }
+  componentDidMount = () => {
+    const roomId = this.props.match.params.roomId;
+    databaseRef.on('value', snapshot => {
+      const projects = snapshot.child(`${roomId}-projecttitle-all`).exists()
+        ? Object.values(snapshot.child(`${roomId}-projecttitle-all`).val())
+        : [];
+      this.setState({ projects });
+    });
+  };
 }
 
-export default RoomContainer;
+export default withRouter(RoomContainer);

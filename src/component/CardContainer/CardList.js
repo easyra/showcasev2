@@ -5,7 +5,13 @@ const CardList = ({ projects }) => {
   return (
     <div className='cards-list'>
       {projects.map(project => (
-        <Card title={project.title} imgLink={project.imgLink} />
+        <Card
+          name={project.title}
+          src={project.img}
+          title={project.projectTitle}
+          period={project.period}
+          link={project.link}
+        />
       ))}
     </div>
   );
