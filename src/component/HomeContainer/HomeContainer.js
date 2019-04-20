@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
+import { databaseRef } from '../firebase';
 import JoinModal from './JoinModal/JoinModal';
 import CreateRoomModal from './CreateRoomModal/CreateRoomModal';
+import bcrypt from 'bcryptjs';
 
 class HomeContainer extends Component {
   state = {
@@ -57,6 +59,7 @@ class HomeContainer extends Component {
   }
   componentWillMount = () => {
     document.addEventListener('keyup', this.toggleModalsKeyup);
+    databaseRef.child('rooms').on('value', () => {});
   };
   componentWillUnmount = () => {
     document.removeEventListener('keyup', this.toggleModalsKeyup);
